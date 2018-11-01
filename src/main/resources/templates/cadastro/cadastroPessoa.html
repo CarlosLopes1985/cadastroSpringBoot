@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th= "http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Olá mundo</h1>
+<form action="salvarPessoa" method="POST">
+
+	<label>Nome</label>
+	<input name="nome"/>
+	<label>SobreNome</label>
+	<input name="sobreNome"/>
+	<label>Idade</label>
+	<input name="idade"/>
+	
+	<input type="submit" value="Salvar">
+</form>
+	
+	<a href="listaPessoas">Listar Pessoas</a>
+	
+	<table border="1">
+	 	<tr th:each = "pessoa : ${pessoas}">
+		<td th:text = "${pessoa.idPessoa}"></td>
+		<td th:text = "${pessoa.nome}"></td>
+		<td th:text = "${pessoa.sobreNome}"></td>
+		<td th:text = "${pessoa.idade}"></td>
+	</tr>
+	</table>
+</body>
+</html>

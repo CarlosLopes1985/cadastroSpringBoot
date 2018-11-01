@@ -25,6 +25,17 @@ public class Pessoa implements Serializable {
 	
 	private String sobreNome;
 
+	private Integer idade;
+	
+	
+	public Integer getIdade() {
+		return idade;
+	}
+
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
+
 	public Integer getIdPessoa() {
 		return idPessoa;
 	}
