@@ -80,6 +80,7 @@ public class ProdutoController {
 	                    "You successfully uploaded '" + file.getOriginalFilename() + "'");
 			 mv =  new ModelAndView("cadastro/uploadStatus");
 		} catch (Exception e) {
+			
 			e.printStackTrace();
 		}
 		
