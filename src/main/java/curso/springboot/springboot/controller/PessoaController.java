@@ -15,9 +15,9 @@ public class PessoaController {
 	@Autowired
 	private PessoaRepository pessoaRepository;
 	
-	@RequestMapping(method=RequestMethod.GET, value=("/cadastroPessoa"))
+	@RequestMapping(method=RequestMethod.GET, value=("/index"))
 	public String inicio(){
-		return "cadastro/cadastroPessoa";
+		return "cadastro/index";
 		
 	}
 	
