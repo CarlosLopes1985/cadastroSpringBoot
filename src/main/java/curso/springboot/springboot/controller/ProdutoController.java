@@ -58,32 +58,35 @@ public class ProdutoController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = "/uploadImagem")
-	public ModelAndView uploadImagemProduto(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes){
-		
-		if(file.isEmpty()){
-			 redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
-			 ModelAndView mv = new ModelAndView("cadastro/uploadStatus");
-			 return mv;
+	public ModelAndView uploadImagemProduto(@RequestParam("file") MultipartFile file,
+			RedirectAttributes redirectAttributes) {
+
+		if (file.isEmpty()) {
+			redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+			ModelAndView mv = new ModelAndView("cadastro/uploadStatus");
+			return mv;
 		}
 		ModelAndView mv = null;
 		try {
-			
-			byte[]bytes = file.getBytes();
-			
+
+			byte[] bytes = file.getBytes();
+
 			Path path = Paths.get(PASTA_DESTINO + file.getOriginalFilename());
-			
-			System.out.println("O caminho é : "+path);
-			
+
+			System.out.println("O caminho é : " + path);
+
 			Files.write(path, bytes);
+
+			redirectAttributes.addFlashAttribute("message",
+					"You successfully uploaded '" + file.getOriginalFilename() + "'");
+			mv = new ModelAndView("cadastro/uploadImagemProduto");
 			
-			 redirectAttributes.addFlashAttribute("message",
-	                    "You successfully uploaded '" + file.getOriginalFilename() + "'");
-			 mv =  new ModelAndView("cadastro/uploadStatus");
+			
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
-		
+
 		return mv;
 	}
 	
